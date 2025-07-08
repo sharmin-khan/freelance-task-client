@@ -1,30 +1,41 @@
 import React from "react";
 import { Link } from "react-router";
 
-const Login = () => {
+const Register = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900">
       <form className="bg-white dark:bg-gray-800 p-6 rounded shadow-md w-full max-w-md">
         <h2 className="text-2xl font-bold mb-4 text-center text-blue-600">
-          Login Now
+          Create Your Account
         </h2>
-        <label className="label mb-1">Email</label>
+        <label className="label mb-1">Full Name</label>
+        <input
+          type="text"
+          placeholder="Enter your full name"
+          className="input input-bordered w-full mb-4"
+        />
+        <label className="label mb-1">Email Address</label>
         <input
           type="email"
-          placeholder="Email"
+          placeholder="Enter your email"
+          className="input input-bordered w-full mb-4"
+        />
+        <label className="label mb-1">Photo URL</label>
+        <input
+          type="url"
+          placeholder="Link to your profile photo"
           className="input input-bordered w-full mb-4"
         />
         <label className="label mb-1">Password</label>
         <input
           type="password"
-          placeholder="Password"
+          placeholder="Create a secure password"
           className="input input-bordered w-full mb-4"
         />
-
-        <button type="submit" className="btn btn-primary w-full text-lg mb-3">
-          Login
+        <button type="submit" className="btn btn-primary w-full text-lg">
+          Sign Up
         </button>
-        <div className="divider">OR</div>
+        <div className="divider">or</div>
         <div className="text-center mb-3">
           <button className="btn bg-white text-black border-[#e5e5e5]">
             <svg
@@ -54,14 +65,13 @@ const Login = () => {
                 ></path>
               </g>
             </svg>
-            Login with Google
+            Sign up with Google
           </button>
         </div>
-
-        <p className="text-sm text-center">
-          Don’t have an account?{" "}
-          <Link to="/signup" className="text-blue-500 underline">
-            Sign Up
+        <p className="mt-4 text-sm text-center">
+          Already have an account?{" "}
+          <Link to="/login" className="text-blue-500 underline">
+            Log In
           </Link>
         </p>
       </form>
@@ -69,4 +79,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
