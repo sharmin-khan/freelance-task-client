@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 text-gray-800">
+    <footer className="bg-gray-100 text-gray-800 dark:bg-gray-900 shadow-md dark:shadow-[0_2px_8px_0_rgba(243,244,246,0.25)]">
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -12,7 +12,7 @@ const Footer = () => {
             <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-blue-700 to-gray-800 text-transparent bg-clip-text">
               TaskNest
             </h3>
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-200 leading-relaxed">
               Connect with skilled freelancers and find the perfect match for
               your projects. Quality work, fair pricing, and reliable delivery.
             </p>
@@ -77,12 +77,14 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-gray-800">Quick Links</h4>
+            <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+              Quick Links
+            </h4>
             <ul className="space-y-2">
               <li>
                 <Link
                   to="/"
-                  className="text-gray-600 hover:text-blue-500 transition-colors"
+                  className="text-gray-600 dark:text-gray-200 hover:text-blue-500 transition-colors"
                 >
                   Home
                 </Link>
@@ -90,7 +92,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/browse-tasks"
-                  className="text-gray-600 hover:text-blue-500 transition-colors"
+                  className="text-gray-600 dark:text-gray-200 hover:text-blue-500 transition-colors"
                 >
                   Browse Tasks
                 </Link>
@@ -98,7 +100,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/add-task"
-                  className="text-gray-600 hover:text-blue-500 transition-colors"
+                  className="text-gray-600 dark:text-gray-200 hover:text-blue-500 transition-colors"
                 >
                   Post a Task
                 </Link>
@@ -106,7 +108,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/my-tasks"
-                  className="text-gray-600 hover:text-blue-500 transition-colors"
+                  className="text-gray-600 dark:text-gray-200 hover:text-blue-500 transition-colors"
                 >
                   My Tasks
                 </Link>
@@ -116,7 +118,9 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-gray-800">Contact Us</h4>
+            <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+              Contact Us
+            </h4>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <svg
@@ -132,7 +136,9 @@ const Footer = () => {
                     d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                   />
                 </svg>
-                <span className="text-gray-600">info@tasknest.com</span>
+                <span className="text-gray-600 dark:text-gray-200">
+                  info@tasknest.com
+                </span>
               </div>
               <div className="flex items-center space-x-3">
                 <svg
@@ -148,7 +154,9 @@ const Footer = () => {
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                   />
                 </svg>
-                <span className="text-gray-600">+1 (555) 123-45678</span>
+                <span className="text-gray-600 dark:text-gray-200">
+                  +1 (555) 123-45678
+                </span>
               </div>
               <div className="flex items-center space-x-3">
                 <svg
@@ -170,7 +178,7 @@ const Footer = () => {
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                <span className="text-gray-600">
+                <span className="text-gray-600 dark:text-gray-200">
                   123 Business Ave, Suite 100
                   <br />
                   New York, NY 10001
@@ -181,12 +189,14 @@ const Footer = () => {
 
           {/* Legal Links */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-gray-800">Legal</h4>
-            <ul className="space-y-2">
+            <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+              Legal
+            </h4>
+            <ul className="space-y-2 ">
               <li>
                 <Link
                   to="/terms"
-                  className="text-gray-600 hover:text-blue-500 transition-colors"
+                  className="text-gray-600 dark:text-gray-200 hover:text-blue-500 transition-colors"
                 >
                   Terms & Conditions
                 </Link>
@@ -194,7 +204,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/privacy"
-                  className="text-gray-600 hover:text-blue-500 transition-colors"
+                  className="text-gray-600 dark:text-gray-200 hover:text-blue-500 transition-colors"
                 >
                   Privacy Policy
                 </Link>
@@ -202,7 +212,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/cookies"
-                  className="text-gray-600 hover:text-blue-500 transition-colors"
+                  className="text-gray-600 dark:text-gray-200 hover:text-blue-500 transition-colors"
                 >
                   Cookie Policy
                 </Link>
@@ -210,7 +220,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/support"
-                  className="text-gray-600 hover:text-blue-500 transition-colors"
+                  className="text-gray-600 dark:text-gray-200 hover:text-blue-500 transition-colors"
                 >
                   Support Center
                 </Link>
@@ -221,7 +231,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-gray-300">
+      <div className="border-t border-gray-300 dark:border-gray-700">
         <div className="container mx-auto px-4 py-6">
           <div className="flex justify-center items-center space-y-4 md:space-y-0">
             <p className="text-gray-400 text-sm">
