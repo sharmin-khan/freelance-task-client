@@ -25,7 +25,7 @@ const Login = () => {
             className="input input-bordered w-full mb-4"
           />
 
-          <button type="submit" className="btn btn-primary w-full text-lg mb-3">
+          <button type="submit" className="btn bg-blue-600 hover:bg-blue-400 text-white w-full text-lg mb-3">
             Login
           </button>
           <div className="divider">OR</div>
