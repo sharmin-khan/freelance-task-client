@@ -10,7 +10,7 @@ const WhyChooseUs = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-left">
           <div className="p-8 border border-gray-200 rounded-xl hover:shadow-lg transition-shadow duration-300 bg-white">
             <FaBolt className="text-blue-600 w-8 h-8 mb-2" />
-            <h3 className="text-2xl font-semibold text-blue-600 mb-3">
+            <h3 className="text-2xl font-medium text-blue-600 mb-3">
               Fast Matching
             </h3>
             <p className="text-gray-700 leading-relaxed">
@@ -19,7 +19,7 @@ const WhyChooseUs = () => {
           </div>
           <div className="p-8 border border-gray-200 rounded-xl hover:shadow-lg transition-shadow duration-300 bg-white">
             <FaLock className="text-blue-600 w-8 h-8 mb-2" />
-            <h3 className="text-2xl font-semibold text-blue-600 mb-3">
+            <h3 className="text-2xl font-medium text-blue-600 mb-3">
               Secure Payments
             </h3>
             <p className="text-gray-700 leading-relaxed">
@@ -28,7 +28,7 @@ const WhyChooseUs = () => {
           </div>
           <div className="p-8 border border-gray-200 rounded-xl hover:shadow-lg transition-shadow duration-300 bg-white">
             <FaHeadset className="text-blue-600 w-8 h-8 mb-2" />
-            <h3 className="text-2xl font-semibold text-blue-600 mb-3">
+            <h3 className="text-2xl font-medium text-blue-600 mb-3">
               24/7 Support
             </h3>
             <p className="text-gray-700 leading-relaxed">
