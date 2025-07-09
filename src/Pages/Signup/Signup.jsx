@@ -2,13 +2,90 @@ import React from "react";
 import signup from "../../assets/images/register.json";
 import { Link } from "react-router";
 import Lottie from "lottie-react";
+import Swal from "sweetalert2";
 
-const Register = () => {
+const handleSignup = (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const name = form.name.value.trim();
+  const email = form.email.value.trim();
+  const photo = form.photo.value.trim();
+  const password = form.password.value.trim();
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Empty field check
+  if (!name || !email || !photo || !password) {
+    Swal.fire({
+      icon: "error",
+      title: "All fields required",
+      text: "Please fill in all fields before submitting.",
+    });
+    return;
+  }
+
+  if (!emailRegex.test(email)) {
+    Swal.fire({
+      icon: "error",
+      title: "Invalid Email",
+      text: "Please enter a valid email address.",
+    });
+    return;
+  }
+
+  // Password validation
+  const uppercase = /[A-Z]/;
+  const lowercase = /[a-z]/;
+
+  if (password.length < 6) {
+    Swal.fire({
+      icon: "error",
+      title: "Password Too Short",
+      text: "Password must be at least 6 characters long",
+    });
+    return false;
+  }
+
+  if (!uppercase.test(password)) {
+    Swal.fire({
+      icon: "error",
+      title: "Password Requirements",
+      text: "Password must contain at least one uppercase letter",
+    });
+    return false;
+  }
+
+  if (!lowercase.test(password)) {
+    Swal.fire({
+      icon: "error",
+      title: "Password Requirements",
+      text: "Password must contain at least one lowercase letter",
+    });
+    return false;
+  }
+
+  // If all valid, show success and proceed
+  Swal.fire({
+    icon: "success",
+    title: "Login Successful",
+    text: "Welcome back!",
+    timer: 1500,
+    showConfirmButton: false,
+  }).then(() => {
+    // Your login logic here
+    console.log("Login successful");
+  });
+};
+
+const Signup = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900">
       {/* Form on the left */}
       <div className="w-1/2 ">
-        <form className="bg-white ml-76 dark:bg-gray-800 p-6 rounded shadow-md w-full max-w-md">
+        <form
+          onSubmit={handleSignup}
+          className="bg-white ml-76 dark:bg-gray-800 p-6 rounded shadow-md w-full max-w-md"
+        >
           <h2 className="text-2xl font-bold mb-4 text-center text-blue-600">
             Create Your Account
           </h2>
@@ -16,24 +93,28 @@ const Register = () => {
           <input
             type="text"
             placeholder="Enter your full name"
+            name="name"
             className="input input-bordered w-full mb-4"
           />
           <label className="label mb-1">Email Address</label>
           <input
             type="email"
             placeholder="Enter your email"
+            name="email"
             className="input input-bordered w-full mb-4"
           />
           <label className="label mb-1">Photo URL</label>
           <input
             type="url"
             placeholder="Link to your profile photo"
+            name="photo"
             className="input input-bordered w-full mb-4"
           />
           <label className="label mb-1">Password</label>
           <input
             type="password"
             placeholder="Create a secure password"
+            name="password"
             className="input input-bordered w-full mb-4"
           />
           <button
@@ -95,4 +176,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Signup;

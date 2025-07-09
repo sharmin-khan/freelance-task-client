@@ -2,13 +2,65 @@ import React from "react";
 import { Link } from "react-router";
 import loginAnimation from "../../assets/images/loginAnimation.json";
 import Lottie from "lottie-react";
+import Swal from "sweetalert2";
+
+const handleLogin = (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const email = form.email.value.trim();
+  const password = form.password.value.trim();
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Check empty fields
+  if (!email || !password) {
+    Swal.fire({
+      icon: "error",
+      title: "All fields required",
+      text: "Please fill in both email and password.",
+    });
+    return;
+  }
+
+  // Check valid email
+  if (!emailRegex.test(email)) {
+    Swal.fire({
+      icon: "error",
+      title: "Invalid Email",
+      text: "Please enter a valid email address.",
+    });
+    return;
+  }
+
+  // Check password length
+  if (password.length < 6) {
+    Swal.fire({
+      icon: "error",
+      title: "Password Too Short",
+      text: "Password must be at least 6 characters.",
+    });
+    return;
+  }
+
+  // Everything is valid
+  Swal.fire({
+    icon: "success",
+    title: "Login Successful",
+    text: "Welcome back!",
+    timer: 1500,
+    showConfirmButton: false,
+  });
+};
 
 const Login = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900">
       {/* Form on the left */}
       <div className="w-1/2 ">
-        <form className="bg-white ml-76 dark:bg-gray-800 p-6 rounded shadow-md w-full max-w-md">
+        <form
+          onSubmit={handleLogin}
+          className="bg-white ml-76 dark:bg-gray-800 p-6 rounded shadow-md w-full max-w-md"
+        >
           <h2 className="text-2xl font-bold mb-4 text-center text-blue-600">
             Login Now
           </h2>
@@ -16,16 +68,21 @@ const Login = () => {
           <input
             type="email"
             placeholder="Email"
+            name="email"
             className="input input-bordered w-full mb-4"
           />
           <label className="label mb-1">Password</label>
           <input
             type="password"
             placeholder="Password"
+            name="password"
             className="input input-bordered w-full mb-4"
           />
 
-          <button type="submit" className="btn bg-blue-600 hover:bg-blue-400 text-white w-full text-lg mb-3">
+          <button
+            type="submit"
+            className="btn bg-blue-600 hover:bg-blue-400 text-white w-full text-lg mb-3"
+          >
             Login
           </button>
           <div className="divider">OR</div>
