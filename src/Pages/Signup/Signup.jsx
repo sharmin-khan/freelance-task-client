@@ -67,28 +67,26 @@ const handleSignup = (e) => {
   // If all valid, show success and proceed
   Swal.fire({
     icon: "success",
-    title: "Login Successful",
-    text: "Welcome back!",
+    title: "Signup Successful",
+    text: "Welcome! Your account has been created.",
     timer: 1500,
     showConfirmButton: false,
-  }).then(() => {
-    // Your login logic here
-    console.log("Login successful");
   });
 };
 
 const Signup = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900">
-      {/* Form on the left */}
-      <div className="w-1/2 ">
+    <div className="min-h-screen flex flex-col-reverse lg:flex-row items-center justify-center bg-gray-100 dark:bg-gray-900 p-4 overflow-x-hidden">
+      {/* Form */}
+      <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
         <form
           onSubmit={handleSignup}
-          className="bg-white ml-76 dark:bg-gray-800 p-6 rounded shadow-md w-full max-w-md"
+          className="bg-white dark:bg-gray-800 p-6 rounded shadow-md w-full max-w-md"
         >
           <h2 className="text-2xl font-bold mb-4 text-center text-blue-600">
             Create Your Account
           </h2>
+
           <label className="label mb-1">Full Name</label>
           <input
             type="text"
@@ -96,6 +94,7 @@ const Signup = () => {
             name="name"
             className="input input-bordered w-full mb-4"
           />
+
           <label className="label mb-1">Email Address</label>
           <input
             type="email"
@@ -103,6 +102,7 @@ const Signup = () => {
             name="email"
             className="input input-bordered w-full mb-4"
           />
+
           <label className="label mb-1">Photo URL</label>
           <input
             type="url"
@@ -110,6 +110,7 @@ const Signup = () => {
             name="photo"
             className="input input-bordered w-full mb-4"
           />
+
           <label className="label mb-1">Password</label>
           <input
             type="password"
@@ -117,13 +118,16 @@ const Signup = () => {
             name="password"
             className="input input-bordered w-full mb-4"
           />
+
           <button
             type="submit"
             className="btn bg-blue-600 hover:bg-blue-400 text-white w-full text-lg"
           >
             Sign Up
           </button>
+
           <div className="divider">or</div>
+
           <div className="text-center mb-3">
             <button className="btn bg-white text-black border-[#e5e5e5]">
               <svg
@@ -156,6 +160,7 @@ const Signup = () => {
               Sign up with Google
             </button>
           </div>
+
           <p className="mt-4 text-sm text-center">
             Already have an account?{" "}
             <Link to="/login" className="text-blue-500 underline">
@@ -164,12 +169,13 @@ const Signup = () => {
           </p>
         </form>
       </div>
-      {/* Lottie animation on the right */}
-      <div className=" hidden lg:block w-1/2">
+
+      {/* Animation (only on large devices) */}
+      <div className="hidden lg:flex lg:w-1/2 justify-center items-center">
         <Lottie
           animationData={signup}
           loop={true}
-          className="max-w-md w-full h-[600px] ml-10"
+          className="max-w-md w-full h-[600px]"
         />
       </div>
     </div>
