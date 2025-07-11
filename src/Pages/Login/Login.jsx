@@ -1,61 +1,74 @@
-import React from "react";
+import React, { use } from "react";
 import { Link } from "react-router";
 import loginAnimation from "../../assets/images/loginAnimation.json";
 import Lottie from "lottie-react";
 import Swal from "sweetalert2";
-
-const handleLogin = (e) => {
-  e.preventDefault();
-  const form = e.target;
-  const email = form.email.value.trim();
-  const password = form.password.value.trim();
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  // Check empty fields
-  if (!email || !password) {
-    Swal.fire({
-      icon: "error",
-      title: "All fields required",
-      text: "Please fill in both email and password.",
-    });
-    return;
-  }
-
-  // Check valid email
-  if (!emailRegex.test(email)) {
-    Swal.fire({
-      icon: "error",
-      title: "Invalid Email",
-      text: "Please enter a valid email address.",
-    });
-    return;
-  }
-
-  // Check password length
-  if (password.length < 6) {
-    Swal.fire({
-      icon: "error",
-      title: "Password Too Short",
-      text: "Password must be at least 6 characters.",
-    });
-    return;
-  }
-
-  // Everything is valid
-  Swal.fire({
-    icon: "success",
-    title: "Login Successful",
-    text: "Welcome back!",
-    timer: 1500,
-    showConfirmButton: false,
-  });
-};
+import { AuthContext } from "../../Context/AuthContext/AuthContext";
 
 const Login = () => {
+  const { logInUser } = use(AuthContext);
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value.trim();
+    const password = form.password.value.trim();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Check empty fields
+    if (!email || !password) {
+      Swal.fire({
+        icon: "error",
+        title: "All fields required",
+        text: "Please fill in both email and password.",
+      });
+      return;
+    }
+
+    // Check valid email
+    if (!emailRegex.test(email)) {
+      Swal.fire({
+        icon: "error",
+        title: "Invalid Email",
+        text: "Please enter a valid email address.",
+      });
+      return;
+    }
+
+    // Check password length
+    if (password.length < 6) {
+      Swal.fire({
+        icon: "error",
+        title: "Password Too Short",
+        text: "Password must be at least 6 characters.",
+      });
+      return;
+    }
+
+    //Sign i User
+    logInUser(email, password)
+      .then((result) => {
+        console.log("User logged in:", result.user);
+        Swal.fire({
+          icon: "success",
+          title: "Login Successful",
+          text: "Welcome back!",
+          timer: 1500,
+          showConfirmButton: false,
+        });
+        form.reset();
+      })
+      .catch((error) => {
+        console.error("Login error:", error);
+        Swal.fire({
+          icon: "error",
+          title: "Login Failed",
+          text: "Enter valid email and password.",
+        });
+      });
+  };
   return (
     <div className="min-h-screen flex flex-col-reverse lg:flex-row items-center justify-center bg-gray-100 dark:bg-gray-900 p-4  overflow-x-hidden">
-      
       {/* Form */}
       <div className="w-full lg:w-1/2 flex lg:justify-end justify-center">
         <form
