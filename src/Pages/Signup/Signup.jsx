@@ -1,8 +1,13 @@
-import React from "react";
+import React, { use } from "react";
 import signup from "../../assets/images/register.json";
 import { Link } from "react-router";
 import Lottie from "lottie-react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../Context/AuthContext/AuthContext";
+
+const Signup = () =>{
+  const {createUser}=use(AuthContext);
+
 
 const handleSignup = (e) => {
   e.preventDefault();
@@ -64,17 +69,31 @@ const handleSignup = (e) => {
     return false;
   }
 
-  // If all valid, show success and proceed
-  Swal.fire({
-    icon: "success",
-    title: "Signup Successful",
-    text: "Welcome! Your account has been created.",
-    timer: 1500,
-    showConfirmButton: false,
-  });
+//Create USer
+ createUser(email, password)
+      .then((result) => {
+        console.log("User created:", result.user);
+        Swal.fire({
+          icon: "success",
+          title: "Signup Successful",
+          text: "Your account has been created.",
+          timer: 1500,
+          showConfirmButton: false,
+        });
+        form.reset();
+      })
+      .catch((error) => {
+        console.error("Signup Error:", error.message);
+        Swal.fire({
+          icon: "error",
+          title: "Signup Failed",
+          text: error.message,
+        });
+      });
+
 };
 
-const Signup = () => {
+
   return (
     <div className="min-h-screen flex flex-col-reverse lg:flex-row items-center justify-center bg-gray-100 dark:bg-gray-900 p-4 overflow-x-hidden">
       {/* Form */}
