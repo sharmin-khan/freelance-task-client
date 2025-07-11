@@ -45,13 +45,13 @@ const Login = () => {
       return;
     }
 
-    //Sign i User
+    //Sign in User
     logInUser(email, password)
       .then((result) => {
         console.log("User logged in:", result.user);
         Swal.fire({
           icon: "success",
-          title: "Login Successful",
+          title: "Login Successfully",
           text: "Welcome back!",
           timer: 1500,
           showConfirmButton: false,

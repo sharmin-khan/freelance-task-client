@@ -75,7 +75,7 @@ const handleSignup = (e) => {
         console.log("User created:", result.user);
         Swal.fire({
           icon: "success",
-          title: "Signup Successful",
+          title: "Signup Successfully",
           text: "Your account has been created.",
           timer: 1500,
           showConfirmButton: false,
