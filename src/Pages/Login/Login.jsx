@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/AuthContext/AuthContext";
 
 const Login = () => {
-  const { logInUser } = use(AuthContext);
+  const { logInUser, signInWithGoogle } = use(AuthContext);
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -67,6 +67,28 @@ const Login = () => {
         });
       });
   };
+  //Google Sign In
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then((result) => {
+        console.log("Google Sign In successful:", result.user);
+        Swal.fire({
+          icon: "success",
+          title: "Google Log In Successfully",
+          text: "Welcome to your account!",
+          timer: 1500,
+          showConfirmButton: false,
+        });
+      })
+      .catch((error) => {
+        console.error("Google Sign In Error:", error.message);
+        Swal.fire({
+          icon: "error",
+          title: "Google Log In Failed",
+          text: error.message,
+        });
+      });
+  };
   return (
     <div className="min-h-screen flex flex-col-reverse lg:flex-row items-center justify-center bg-gray-100 dark:bg-gray-900 p-4  overflow-x-hidden">
       {/* Form */}
@@ -105,7 +127,11 @@ const Login = () => {
           <div className="divider">OR</div>
 
           <div className="text-center mb-3">
-            <button className="btn bg-white text-black border-[#e5e5e5]">
+            <button
+              onClick={handleGoogleSignIn}
+              type="button"
+              className="btn bg-white text-black border-[#e5e5e5]"
+            >
               <svg
                 aria-label="Google logo"
                 width="16"

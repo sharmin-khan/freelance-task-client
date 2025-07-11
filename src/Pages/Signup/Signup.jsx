@@ -5,72 +5,71 @@ import Lottie from "lottie-react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/AuthContext/AuthContext";
 
-const Signup = () =>{
-  const {createUser}=use(AuthContext);
+const Signup = () => {
+  const { createUser, signInWithGoogle } = use(AuthContext);
 
+  const handleSignup = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const photo = form.photo.value.trim();
+    const password = form.password.value.trim();
 
-const handleSignup = (e) => {
-  e.preventDefault();
-  const form = e.target;
-  const name = form.name.value.trim();
-  const email = form.email.value.trim();
-  const photo = form.photo.value.trim();
-  const password = form.password.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // Empty field check
+    if (!name || !email || !photo || !password) {
+      Swal.fire({
+        icon: "error",
+        title: "All fields required",
+        text: "Please fill in all fields before submitting.",
+      });
+      return;
+    }
 
-  // Empty field check
-  if (!name || !email || !photo || !password) {
-    Swal.fire({
-      icon: "error",
-      title: "All fields required",
-      text: "Please fill in all fields before submitting.",
-    });
-    return;
-  }
+    if (!emailRegex.test(email)) {
+      Swal.fire({
+        icon: "error",
+        title: "Invalid Email",
+        text: "Please enter a valid email address.",
+      });
+      return;
+    }
 
-  if (!emailRegex.test(email)) {
-    Swal.fire({
-      icon: "error",
-      title: "Invalid Email",
-      text: "Please enter a valid email address.",
-    });
-    return;
-  }
+    // Password validation
+    const uppercase = /[A-Z]/;
+    const lowercase = /[a-z]/;
 
-  // Password validation
-  const uppercase = /[A-Z]/;
-  const lowercase = /[a-z]/;
+    if (password.length < 6) {
+      Swal.fire({
+        icon: "error",
+        title: "Password Too Short",
+        text: "Password must be at least 6 characters long",
+      });
+      return false;
+    }
 
-  if (password.length < 6) {
-    Swal.fire({
-      icon: "error",
-      title: "Password Too Short",
-      text: "Password must be at least 6 characters long",
-    });
-    return false;
-  }
+    if (!uppercase.test(password)) {
+      Swal.fire({
+        icon: "error",
+        title: "Password Requirements",
+        text: "Password must contain at least one uppercase letter",
+      });
+      return false;
+    }
 
-  if (!uppercase.test(password)) {
-    Swal.fire({
-      icon: "error",
-      title: "Password Requirements",
-      text: "Password must contain at least one uppercase letter",
-    });
-    return false;
-  }
+    if (!lowercase.test(password)) {
+      Swal.fire({
+        icon: "error",
+        title: "Password Requirements",
+        text: "Password must contain at least one lowercase letter",
+      });
+      return false;
+    }
 
-  if (!lowercase.test(password)) {
-    Swal.fire({
-      icon: "error",
-      title: "Password Requirements",
-      text: "Password must contain at least one lowercase letter",
-    });
-    return false;
-  }
-
-//Create USer
- createUser(email, password)
+    //Create USer
+    createUser(email, password)
       .then((result) => {
         console.log("User created:", result.user);
         Swal.fire({
@@ -90,10 +89,30 @@ const handleSignup = (e) => {
           text: error.message,
         });
       });
+  };
 
-};
-
-
+  //Google Sign In
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then((result) => {
+        console.log("Google Sign In successful:", result.user);
+        Swal.fire({
+          icon: "success",
+          title: "Google Sign In Successfully",
+          text: "Welcome to your account!",
+          timer: 1500,
+          showConfirmButton: false,
+        });
+      })
+      .catch((error) => {
+        console.error("Google Sign In Error:", error.message);
+        Swal.fire({
+          icon: "error",
+          title: "Google Sign In Failed",
+          text: error.message,
+        });
+      });
+  };
   return (
     <div className="min-h-screen flex flex-col-reverse lg:flex-row items-center justify-center bg-gray-100 dark:bg-gray-900 p-4 overflow-x-hidden">
       {/* Form */}
@@ -148,7 +167,11 @@ const handleSignup = (e) => {
           <div className="divider">or</div>
 
           <div className="text-center mb-3">
-            <button className="btn bg-white text-black border-[#e5e5e5]">
+            <button
+              onClick={handleGoogleSignIn}
+              type="button"
+              className="btn bg-white text-black border-[#e5e5e5]"
+            >
               <svg
                 aria-label="Google logo"
                 width="16"
