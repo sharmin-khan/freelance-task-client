@@ -11,6 +11,7 @@ import BrowseTasks from "../Pages/BrowseTasks/BrowseTasks";
 import TaskDetails from "../Pages/TaskDetails/TaskDetails";
 import MyPostedTask from "../Pages/MyPostedTask/MyPostedTask";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
