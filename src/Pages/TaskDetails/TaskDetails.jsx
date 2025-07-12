@@ -39,31 +39,31 @@ const TaskDetails = () => {
     );
 
   return (
-    <div className="max-w-3xl lg:mx-auto md:mx-4 mx-2 p-6 my-10  bg-white dark:bg-gray-800 shadow-lg rounded-2xl border border-gray-200 dark:border-gray-700">
+    <div className="max-w-3xl lg:mx-auto md:mx-4 mx-2 p-6 my-10  bg-base-300 dark:bg-base-300 shadow-lg rounded-2xl border border-gray-200 dark:border-gray-700">
       <h2 className="text-3xl text-center font-semibold text-blue-600 mb-6">
         Task Overview
       </h2>
 
       <div className="space-y-4 text-gray-800 dark:text-gray-200 md:text-lg text-md">
         <p>
-          <span className="font-semibold">Title :</span> {task.title}
+          <span className="font-semibold dark:text-blue-400">Title :</span> {task.title}
         </p>
         <p>
-          <span className="font-semibold">Category :</span> {task.category}
+          <span className="font-semibold dark:text-blue-400">Category :</span> {task.category}
         </p>
         <p>
-          <span className="font-semibold">Description :</span>{" "}
+          <span className="font-semibold dark:text-blue-400">Description :</span>{" "}
           {task.description}
         </p>
         <p>
-          <span className="font-semibold">Deadline :</span>{" "}
+          <span className="font-semibold dark:text-blue-400">Deadline :</span>{" "}
           {new Date(task.deadline).toLocaleDateString()}
         </p>
         <p>
-          <span className="font-semibold">Budget :</span> ${task.budget}
+          <span className="font-semibold dark:text-blue-400">Budget :</span> ${task.budget}
         </p>
         <p>
-          <span className="font-semibold">Posted By :</span> {task.userName} (
+          <span className="font-semibold dark:text-blue-400">Posted By :</span> {task.userName} (
           {task.userEmail})
         </p>
         <button

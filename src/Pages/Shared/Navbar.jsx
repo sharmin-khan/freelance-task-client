@@ -62,7 +62,7 @@ const navItems = (
     </li>
     <li>
       <NavLink
-        to="/my-tasks"
+        to="/my-posted-tasks"
         className={({ isActive }) =>
           `relative font-semibold px-3 py-1
           after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 
