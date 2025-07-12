@@ -28,7 +28,7 @@ const BrowseTasks = () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto py-10 px-4">
+    <div className="max-w-7xl lg:mx-auto md:mx-4 mx-2 py-10 px-4">
       <h2 className="text-3xl font-bold mb-6 text-center text-blue-600">
         Browse Tasks
       </h2>
@@ -46,7 +46,7 @@ const BrowseTasks = () => {
               Deadline: {task.deadline}
             </p>
             <Link to={`/task/${task._id}`}>
-              <button className="p-2 rounded-sm cursor-pointer bg-blue-600 hover:bg-blue-500 text-white mt-2">
+              <button className="p-2 rounded-sm cursor-pointer bg-blue-600 hover:bg-blue-700 text-white mt-2">
                 See Details
               </button>
             </Link>
