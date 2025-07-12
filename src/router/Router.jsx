@@ -10,7 +10,7 @@ import AddTask from "../Pages/AddTask/AddTask";
 import BrowseTasks from "../Pages/BrowseTasks/BrowseTasks";
 import TaskDetails from "../Pages/TaskDetails/TaskDetails";
 import MyPostedTask from "../Pages/MyPostedTask/MyPostedTask";
-
+import BidsPage from "../Pages/Bidspage/Bidspage";
 
 const router = createBrowserRouter([
   {
@@ -51,13 +51,17 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path:"my-posted-tasks",
+        path: "my-posted-tasks",
         element: (
           <PrivateRoute>
-           <MyPostedTask/>
+            <MyPostedTask />
           </PrivateRoute>
         ),
-      }
+      },
+      {
+        path: "/bids/:id",
+        Component: BidsPage,
+      },
     ],
   },
 ]);

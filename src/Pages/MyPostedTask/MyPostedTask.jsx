@@ -2,6 +2,7 @@ import React, { use, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthContext/AuthContext";
 import LoadingSpinner from "../../components/Spinner/LoadingSpinner";
 import Swal from "sweetalert2";
+import { Link } from "react-router";
 
 const MyPostedTask = () => {
   const { user, loading } = use(AuthContext);
@@ -53,7 +54,7 @@ const MyPostedTask = () => {
       userEmail: selectedTask.userEmail,
       userName: selectedTask.userName,
     };
-// Update task on server
+    // Update task on server
     fetch(`http://localhost:5000/task/${selectedTask._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -158,9 +159,12 @@ const MyPostedTask = () => {
                   >
                     Delete
                   </button>
-                  <button className="px-3 py-1 bg-green-500 hover:bg-green-600 text-white rounded">
+                  <Link
+                    to={`/bids/${task._id}`}
+                    className="px-3 py-1 bg-green-500 hover:bg-green-600 text-white rounded"
+                  >
                     Bids
-                  </button>
+                  </Link>
                 </td>
               </tr>
             ))}
