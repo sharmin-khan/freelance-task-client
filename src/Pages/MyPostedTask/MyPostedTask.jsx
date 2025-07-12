@@ -53,7 +53,7 @@ const MyPostedTask = () => {
       userEmail: selectedTask.userEmail,
       userName: selectedTask.userName,
     };
-
+// Update task on server
     fetch(`http://localhost:5000/task/${selectedTask._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -87,6 +87,32 @@ const MyPostedTask = () => {
           text: "Something went wrong. Please try again.",
         });
       });
+  };
+  //Handle task deletion
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this task!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/task/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire("Deleted!", "Your task has been deleted.", "success");
+              const remaining = myTasks.filter((task) => task._id !== id);
+              setMyTasks(remaining);
+            }
+          });
+      }
+    });
   };
 
   return (
@@ -126,7 +152,10 @@ const MyPostedTask = () => {
                   >
                     Update
                   </button>
-                  <button className="px-3 py-1 bg-red-500 hover:bg-red-600 text-white rounded">
+                  <button
+                    onClick={() => handleDelete(task._id)}
+                    className="px-3 py-1 bg-red-500 hover:bg-red-600 text-white rounded"
+                  >
                     Delete
                   </button>
                   <button className="px-3 py-1 bg-green-500 hover:bg-green-600 text-white rounded">
