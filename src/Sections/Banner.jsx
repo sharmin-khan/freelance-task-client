@@ -58,16 +58,7 @@ const Banner = () => {
                 <p className="text-white text-sm sm:text-base md:text-lg max-w-2xl drop-shadow">
                   {slide.desc}
                 </p>
-                <div className="flex flex-col md:flex-row gap-3 w-full max-w-md items-center md:items-stretch">
-                  <input
-                    type="text"
-                    placeholder="Search for tasks or skills..."
-                    className="flex-1 px-4 py-2 rounded-md text-base-100 focus:outline-none border dark:border-gray-100 dark:text-gray-50"
-                  />
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 md:px-6 md:py-2 rounded-md font-semibold transition cursor-pointer text-sm md:text-base w-28 md:w-auto">
-                    Search
-                  </button>
-                </div>
+             
               </div>
             </div>
           </SwiperSlide>
