@@ -2,6 +2,7 @@ import React, { useEffect, useState, use } from "react";
 import { useParams, Navigate, useNavigate } from "react-router";
 import LoadingSpinner from "../../components/Spinner/LoadingSpinner";
 import { AuthContext } from "../../Context/AuthContext/AuthContext";
+import BidForm from "../../components/BidForm/BidForm";
 
 const TaskDetails = () => {
   const { id } = useParams();
@@ -65,6 +66,7 @@ const TaskDetails = () => {
         <p>
           <span className="font-semibold dark:text-blue-400">Posted By :</span> {task.userName} (
           {task.userEmail})
+          <BidForm taskId={task._id} />
         </p>
         <button
           onClick={() => navigate(-1)}

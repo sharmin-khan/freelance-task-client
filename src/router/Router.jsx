@@ -59,7 +59,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/bids/:id",
+        path: "bids/:taskId",
         Component: BidsPage,
       },
     ],
