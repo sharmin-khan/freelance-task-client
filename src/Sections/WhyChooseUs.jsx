@@ -4,9 +4,16 @@ import { FaBolt, FaHeadset, FaLock } from "react-icons/fa";
 const WhyChooseUs = () => {
   return (
     <section className="my-20 px-6 max-w-7xl mx-auto text-center">
-      <h2 className="text-4xl font-semibold text-blue-600 mb-12">
+      <h2 className="text-4xl font-semibold text-blue-600 mb-8">
         Why Choose TaskNest?
       </h2>
+      <p className="text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-12">
+        TaskNest is your trusted freelance marketplace where quality meets
+        efficiency. Whether you're a client looking for talented professionals
+        or a freelancer seeking meaningful work, TaskNest provides a secure,
+        fast, and user-friendly platform that ensures smooth collaboration and
+        successful project delivery every time.
+      </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-left">
         <div className="p-8 border border-gray-200 dark:border-gray-600 dark:bg-gray-800  rounded-xl hover:shadow-lg transition-shadow duration-300 bg-white">
           <FaBolt className="text-blue-600 w-7 h-7 mb-2" />
