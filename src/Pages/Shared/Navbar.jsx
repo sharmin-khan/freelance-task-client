@@ -83,6 +83,7 @@ const navItems = (
 
 const Navbar = () => {
   const { user, logOutUser } = use(AuthContext);
+  //  console.log(user); 
 
   const handleLogOut = () => {
     logOutUser()
@@ -100,7 +101,7 @@ const Navbar = () => {
         console.error("Logout error:", error);
       });
   };
-  // Theme state and persistence
+
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") === "light" ? "light" : "night"
   );
@@ -126,7 +127,7 @@ const Navbar = () => {
       {/* Desktop Menu + Auth */}
       <div className="hidden lg:flex items-center space-x-5">
         <ul className="flex gap-3 items-center">
-          {/* Theme Toggle to the left of Home */}
+          {/* Theme Toggle */}
           <li className="flex items-center">
             <button
               onClick={() => {
@@ -143,14 +144,31 @@ const Navbar = () => {
               {theme === "light" ? <FaSun size={20} /> : <FaMoon size={20} />}
             </button>
           </li>
+
           {navItems}
+
           {user ? (
-            <button
-              onClick={handleLogOut}
-              className="border border-blue-600 text-blue-600 px-4 py-2 rounded-3xl text-md font-semibold hover:bg-blue-600 hover:text-white transition dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-400 dark:hover:text-gray-900"
-            >
-              Log Out
-            </button>
+            <>
+              {/* Avatar + Hover Tooltip */}
+              <div className="relative group">
+                <img
+                  src={user.photoURL}
+                  alt="User Avatar"
+                  className="w-10 h-10 rounded-full border-2 border-blue-600 object-cover cursor-pointer"
+                />
+                <div className="absolute bottom-[-35px] left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap z-10">
+                  {user.displayName}
+                </div>
+              </div>
+
+              {/* Log Out Button */}
+              <button
+                onClick={handleLogOut}
+                className="border border-blue-600 text-blue-600 px-4 py-2 rounded-3xl text-md font-semibold hover:bg-blue-600 hover:text-white transition dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-400 dark:hover:text-gray-900"
+              >
+                Log Out
+              </button>
+            </>
           ) : (
             <div className="flex gap-2">
               <Link
@@ -170,9 +188,8 @@ const Navbar = () => {
         </ul>
       </div>
 
-      {/* Mobile Menu: Theme Toggle left of Hamburger */}
+      {/* Mobile Menu */}
       <div className="flex items-center gap-2 lg:hidden">
-        {/* Theme Toggle to the left of menu button */}
         <button
           onClick={() => {
             const newTheme = theme === "night" ? "light" : "night";
@@ -185,7 +202,7 @@ const Navbar = () => {
         >
           {theme === "light" ? <FaSun size={20} /> : <FaMoon size={20} />}
         </button>
-        {/* Hamburger menu */}
+
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost">
             <svg
@@ -209,12 +226,23 @@ const Navbar = () => {
           >
             {navItems}
             {user ? (
-              <button
-                onClick={handleLogOut}
-                className="border border-blue-600 text-blue-600 px-4 py-2 rounded-3xl text-md font-semibold hover:bg-blue-600 hover:text-white transition dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-400 dark:hover:text-gray-900"
-              >
-                Log Out
-              </button>
+              <>
+                {/* Avatar with name */}
+                <div className="flex flex-col items-center text-sm mb-2">
+                  <img
+                    src={user.photoURL}
+                    alt="User"
+                    className="w-10 h-10 rounded-full border"
+                  />
+                  <span className="mt-1">{user.displayName}</span>
+                </div>
+                <button
+                  onClick={handleLogOut}
+                  className="border border-blue-600 text-blue-600 px-4 py-1 rounded-md text-sm hover:bg-blue-600 hover:text-white transition"
+                >
+                  Log Out
+                </button>
+              </>
             ) : (
               <div className="flex flex-col gap-2">
                 <Link
