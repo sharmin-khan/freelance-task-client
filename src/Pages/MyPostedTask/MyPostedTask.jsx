@@ -14,7 +14,7 @@ const MyPostedTask = () => {
   // Fetch user's tasks
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/task?email=${user.email}`)
+      fetch(`https://freelance-task-server-dusky.vercel.app/task?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           setMyTasks(data);
@@ -55,7 +55,7 @@ const MyPostedTask = () => {
       userName: selectedTask.userName,
     };
     // Update task on server
-    fetch(`http://localhost:5000/task/${selectedTask._id}`, {
+    fetch(`https://freelance-task-server-dusky.vercel.app/task/${selectedTask._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedTask),
@@ -101,7 +101,7 @@ const MyPostedTask = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/task/${id}`, {
+        fetch(`https://freelance-task-server-dusky.vercel.app/task/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

@@ -7,7 +7,7 @@ const BrowseTasks = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/task")
+    fetch("https://freelance-task-server-dusky.vercel.app/task")
       .then((res) => res.json())
       .then((data) => {
         setTasks(data);

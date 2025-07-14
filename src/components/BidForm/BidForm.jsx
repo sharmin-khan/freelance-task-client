@@ -24,7 +24,7 @@ const BidForm = ({ taskId }) => {
       bidMessage,
     };
 
-    fetch("http://localhost:5000/bids", {
+    fetch("https://freelance-task-server-dusky.vercel.app/bids", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

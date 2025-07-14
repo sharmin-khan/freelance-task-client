@@ -6,7 +6,7 @@ const FeaturedTasks = () => {
   const [loading, setLoading] = useState(true); // loading state
 
   useEffect(() => {
-    fetch("http://localhost:5000/featured-tasks")
+    fetch("https://freelance-task-server-dusky.vercel.app/featured-tasks")
       .then((res) => res.json())
       .then((data) => {
         setTasks(data);

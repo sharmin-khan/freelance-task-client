@@ -20,7 +20,7 @@ const AddTask = () => {
     };
 
     // Send to server
-    fetch("http://localhost:5000/task", {
+    fetch("https://freelance-task-server-dusky.vercel.app/task", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

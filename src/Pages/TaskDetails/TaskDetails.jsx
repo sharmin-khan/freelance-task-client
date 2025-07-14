@@ -12,7 +12,7 @@ const TaskDetails = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/task/${id}`)
+    fetch(`https://freelance-task-server-dusky.vercel.app/task/${id}`)
       .then((res) => {
         if (!res.ok) {
           throw new Error("Task not found");

@@ -8,7 +8,7 @@ const BidsPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/bids/${taskId}`)
+    fetch(`https://freelance-task-server-dusky.vercel.app/bids/${taskId}`)
       .then((res) => res.json())
       .then((data) => {
         setBids(data);

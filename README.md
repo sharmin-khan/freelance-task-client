@@ -1,12 +1,42 @@
-# React + Vite
+# **TaskNest - Freelance Task Marketplace**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🔗 **Live Site URL:**   [https://freelance-task-marketpla-73040.web.app/]
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## **📌 Project Overview**
 
-## Expanding the ESLint configuration
+TaskNest is a freelance task marketplace where users can post small tasks and freelancers can bid on them. It connects clients with skilled freelancers based on category, budget, and deadline.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## **🚀 Features**
+
+- **🔐 Authentication:** Secure email/password login and Google authentication.
+- **📝 Add Tasks:** Logged-in users can create tasks with full CRUD capabilities.
+- **🔍 Browse Tasks:** View all posted tasks with filterable categories and view details.
+- **📄 Task Details Page:** View full info and place bids (private route).
+- **🎯 Bidding System:** Users can bid on tasks, and bids are stored and tracked.
+- **👩‍💻 My Posted Tasks:** Users can manage their own posted tasks (update/delete).
+- **🌐 Responsive Design:** Works across mobile, tablet, and desktop.
+- **💡 Dark/Light Theme:** Theme toggle option throughout the app.
+- **🧠 Lottie Animations & Tooltips:** Interactive and clean UI using animation libraries.
+- **🧭 Protected Routes:** All private routes are protected and don't break on reload.
+- **🚀 Firebase Hosting:** Fast and secure deployment for the client-side application.
+
+---
+
+## **🛠 Tech Stack**
+
+- **React + React Router**
+- **Firebase Auth**
+- **MongoDB + Express.js**
+- **Tailwind CSS + DaisyUI**
+- **SweetAlert2, Lottie React, React Tooltip**
+- **Firebase Hosting (client deployment),Vercel (server)**
+
+---
+
+## **📜 License**
+
+This project is open source and free to use for educational purposes.
