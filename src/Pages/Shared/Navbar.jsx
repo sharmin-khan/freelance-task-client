@@ -4,6 +4,7 @@ import { FaSun, FaMoon } from "react-icons/fa";
 import { AuthContext } from "../../Context/AuthContext/AuthContext";
 import Swal from "sweetalert2";
 
+
 const navItems = (
   <>
     <li>
@@ -12,12 +13,12 @@ const navItems = (
         className={({ isActive }) =>
           `relative font-semibold px-3 py-1
           after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 
-          after:h-[2px] after:bg-blue-600 after:transition-all after:duration-300 
+          after:h-[2px] after:bg-blue-200 dark:after:bg-black after:transition-all after:duration-300 
           hover:after:w-full 
           ${
             isActive
-              ? "text-blue-600 after:w-full"
-              : "text-gray-700 dark:text-gray-200"
+              ? "text-blue-200 dark:text-black after:w-full"
+              : "text-black dark:text-gray-100"
           }`
         }
       >
@@ -30,12 +31,12 @@ const navItems = (
         className={({ isActive }) =>
           `relative font-semibold px-3 py-1
           after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 
-          after:h-[2px] after:bg-blue-600 after:transition-all after:duration-300 
+          after:h-[2px] after:bg-blue-200 dark:after:bg-black after:transition-all after:duration-300 
           hover:after:w-full 
           ${
             isActive
-              ? "text-blue-600 after:w-full"
-              : "text-gray-700 dark:text-gray-200"
+              ? "text-blue-200 dark:text-black after:w-full"
+              : "text-black dark:text-gray-100"
           }`
         }
       >
@@ -48,12 +49,12 @@ const navItems = (
         className={({ isActive }) =>
           `relative font-semibold px-3 py-1
           after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 
-          after:h-[2px] after:bg-blue-600 after:transition-all after:duration-300 
+          after:h-[2px] after:bg-blue-200 dark:after:bg-black after:transition-all after:duration-300 
           hover:after:w-full 
           ${
             isActive
-              ? "text-blue-600 after:w-full"
-              : "text-gray-700 dark:text-gray-200"
+              ? "text-blue-200 dark:text-black after:w-full"
+              : "text-black dark:text-gray-100"
           }`
         }
       >
@@ -66,12 +67,12 @@ const navItems = (
         className={({ isActive }) =>
           `relative font-semibold px-3 py-1
           after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 
-          after:h-[2px] after:bg-blue-600 after:transition-all after:duration-300 
+          after:h-[2px] after:bg-blue-200 dark:after:bg-black after:transition-all after:duration-300 
           hover:after:w-full 
           ${
             isActive
-              ? "text-blue-600 after:w-full"
-              : "text-gray-700 dark:text-gray-200"
+              ? "text-blue-200 dark:text-black after:w-full"
+              : "text-black dark:text-gray-100"
           }`
         }
       >
@@ -113,16 +114,18 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="navbar bg-white dark:bg-gray-900 dark:text-gray-100 shadow-md dark:shadow-[0_2px_8px_0_rgba(243,244,246,0.25)] px-4 py-2">
+   <div className="navbar bg-gradient-to-r from-indigo-800 to-purple-600 text-white shadow-md px-4 py-2">
       {/* Logo */}
-      <div className="flex-1">
-        <Link
-          to="/"
-          className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-blue-700 to-gray-800 text-transparent bg-clip-text"
-        >
-          TaskNest
-        </Link>
-      </div>
+   <div className="flex-1 flex items-center">
+  {/* Main Logo */}
+  <Link
+    to="/"
+    className="text-2xl font-bold bg-gradient-to-r from-blue-200 via-purple-500 to-indigo-300 text-transparent bg-clip-text flex items-center justify-center gap-1"
+  >
+    <span>TaskNest</span>
+  </Link>
+
+</div>
 
       {/* Desktop Menu + Auth */}
       <div className="hidden lg:flex items-center space-x-5">
@@ -138,7 +141,7 @@ const Navbar = () => {
                   .querySelector("html")
                   .setAttribute("data-theme", newTheme);
               }}
-              className="p-2 text-yellow-500 dark:text-gray-100 transition"
+              className="p-2 text-yellow-500 dark:text-gray-100 transition cursor-pointer"
               aria-label="Toggle dark mode"
             >
               {theme === "light" ? <FaSun size={20} /> : <FaMoon size={20} />}
@@ -154,7 +157,7 @@ const Navbar = () => {
                 <img
                   src={user.photoURL}
                   alt="User Avatar"
-                  className="w-10 h-10 rounded-full border-2 border-blue-600 object-cover cursor-pointer"
+                  className="w-10 h-10 rounded-full border-2 border-blue-200 object-cover cursor-pointer"
                 />
                 <div className="absolute bottom-[-35px] left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap z-10">
                   {user.displayName}
@@ -164,7 +167,7 @@ const Navbar = () => {
               {/* Log Out Button */}
               <button
                 onClick={handleLogOut}
-                className="border border-blue-600 text-blue-600 px-4 py-2 rounded-3xl text-md font-semibold hover:bg-blue-600 hover:text-white transition dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-400 dark:hover:text-gray-900"
+                className="border-2 border-blue-400 bg-blue-400 text-black hover:text-white hover:bg-transparent hover:border-blue-400 px-4 py-2 rounded-3xl text-md font-semibold transition cursor-pointer"
               >
                 Log Out
               </button>
@@ -173,13 +176,13 @@ const Navbar = () => {
             <div className="flex gap-2">
               <Link
                 to="/login"
-                className="border border-blue-600 text-blue-600 px-4 py-2 rounded-3xl text-md font-semibold hover:bg-blue-600 hover:text-white transition dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-400 dark:hover:text-gray-900"
+                className="border-2 border-blue-400 bg-blue-400 text-black hover:text-white hover:bg-transparent hover:border-blue-400 px-4 py-2 rounded-3xl text-md font-semibold transition cursor-pointer"
               >
                 Login
               </Link>
               <Link
                 to="/signup"
-                className="border border-blue-600 text-blue-600 px-4 py-2 rounded-3xl text-md font-semibold hover:bg-blue-600 hover:text-white transition dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-400 dark:hover:text-gray-900"
+                className="border-2 border-blue-400 bg-blue-400 text-black hover:text-white hover:bg-transparent hover:border-blue-400 px-4 py-2 rounded-3xl text-md font-semibold transition cursor-pointer"
               >
                 Signup
               </Link>
