@@ -8,9 +8,9 @@ const Banner = () => {
   return (
     <div className="w-full my-20 px-4">
       <div
-        className="grid grid-cols-1 md:grid-cols-2 items-center gap-8 rounded-xl p-8 
-  bg-gradient-to-r from-blue-50 to-purple-50 
-  dark:from-gray-800 dark:via-purple-900 dark:to-indigo-900"
+        className="grid grid-cols-1 md:grid-cols-2 items-center gap-8 rounded-xl px-8 py-12
+              bg-gradient-to-r from-blue-50 to-purple-50 
+              dark:from-gray-800 dark:via-purple-900 dark:to-indigo-900"
       >
         {/* Left Side (Content) */}
         <motion.div
@@ -32,42 +32,37 @@ const Banner = () => {
         </motion.div>
 
         {/* Right Side (Images with Animation) */}
-        <motion.div
-          initial={{ x: 50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="grid grid-cols-2 gap-4"
-        >
-          {/* Image 1 - Up Down */}
+        <div className="relative w-full h-80">
+          {/* Main Image */}
           <motion.img
-            src={img1}
-            alt="Freelancer"
-            className="w-full h-48 object-cover rounded-lg shadow"
+            src={img3}
+            alt="Task"
+            className="absolute top-0 left-1/4 w-2/4 h-full object-cover rounded-xl shadow-lg"
             animate={{ y: [0, -15, 0] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             whileHover={{ scale: 1.05 }}
           />
 
-          {/* Image 2 - Left Right */}
+          {/* Left Image */}
           <motion.img
-            src={img2}
-            alt="Work"
-            className="w-full h-48 object-cover rounded-lg shadow"
-            animate={{ x: [0, 15, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            whileHover={{ scale: 1.05 }}
-          />
-
-          {/* Image 3 - Slow Up Down */}
-          <motion.img
-            src={img3}
-            alt="Task"
-            className="col-span-2 w-full h-64 object-cover rounded-lg shadow"
-            animate={{ y: [0, 20, 0] }}
+            src={img1}
+            alt="Freelancer"
+            className="absolute top-10 left-0 w-1/3 h-2/3 object-cover rounded-xl shadow-lg"
+            animate={{ y: [0, 10, 0], x: [0, -5, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             whileHover={{ scale: 1.05 }}
           />
-        </motion.div>
+
+          {/* Right Image */}
+          <motion.img
+            src={img2}
+            alt="Work"
+            className="absolute top-20 right-0 w-1/3 h-2/3 object-cover rounded-xl shadow-lg"
+            animate={{ y: [0, 15, 0], x: [0, 5, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            whileHover={{ scale: 1.05 }}
+          />
+        </div>
       </div>
     </div>
   );
