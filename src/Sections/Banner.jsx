@@ -6,7 +6,7 @@ import img3 from "../assets/images/image4.jpg";
 
 const Banner = () => {
   return (
-    <div className="w-full my-6 px-4">
+    <div className="w-full my-20 px-4">
       <div
         className="grid grid-cols-1 md:grid-cols-2 items-center gap-8 rounded-xl p-8 
   bg-gradient-to-r from-blue-50 to-purple-50 
@@ -22,7 +22,7 @@ const Banner = () => {
           <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
             Find the Best Freelancers for Your Task
           </h2>
-          <p className="text-gray-600 md:text-lg">
+          <p className="text-gray-600 dark:text-gray-300 md:text-lg">
             Post your project and connect with skilled freelancers worldwide.
             Get your work done quickly and professionally.
           </p>

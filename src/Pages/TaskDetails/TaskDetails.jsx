@@ -23,57 +23,52 @@ const TaskDetails = () => {
       .catch((err) => setError(err.message));
   }, [id]);
 
-  if (loading)
-    return (
-      <p>
-        <LoadingSpinner />
-      </p>
-    );
+  if (loading) return <LoadingSpinner />;
   if (!user) return <Navigate to="/login" replace />;
-  if (error) return <p className="text-red-600 text-center">{error}</p>;
-  if (!task)
-    return (
-      <p className="text-center">
-        {" "}
-        <LoadingSpinner />
-      </p>
-    );
+  if (error) return <p className="text-red-600 text-center mt-6">{error}</p>;
+  if (!task) return <LoadingSpinner />;
 
   return (
-    <div className="max-w-3xl lg:mx-auto md:mx-4 mx-2 p-6 my-10  bg-base-300 dark:bg-base-300 shadow-lg rounded-2xl border border-gray-200 dark:border-gray-700">
-      <h2 className="text-3xl text-center font-semibold text-blue-600 mb-6">
+    <div className="max-w-4xl mx-auto p-6 my-20 bg-white dark:bg-gray-800 shadow-xl rounded-2xl border border-gray-200 dark:border-gray-700 transition-all duration-300">
+   <h2 className="text-4xl font-bold mb-10 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
         Task Overview
       </h2>
 
       <div className="space-y-4 text-gray-800 dark:text-gray-200 md:text-lg text-md">
         <p>
-          <span className="font-semibold dark:text-blue-400">Title :</span> {task.title}
+          <span className="font-semibold text-blue-500 dark:text-blue-400">Title:</span> {task.title}
         </p>
         <p>
-          <span className="font-semibold dark:text-blue-400">Category :</span> {task.category}
+          <span className="font-semibold text-blue-500 dark:text-blue-400">Category:</span> {task.category}
         </p>
         <p>
-          <span className="font-semibold dark:text-blue-400">Description :</span>{" "}
-          {task.description}
+          <span className="font-semibold text-blue-500 dark:text-blue-400">Description:</span> {task.description}
         </p>
         <p>
-          <span className="font-semibold dark:text-blue-400">Deadline :</span>{" "}
+          <span className="font-semibold text-blue-500 dark:text-blue-400">Deadline:</span>{" "}
           {new Date(task.deadline).toLocaleDateString()}
         </p>
         <p>
-          <span className="font-semibold dark:text-blue-400">Budget :</span> ${task.budget}
+          <span className="font-semibold text-blue-500 dark:text-blue-400">Budget:</span> ${task.budget}
         </p>
         <p>
-          <span className="font-semibold dark:text-blue-400">Posted By :</span> {task.userName} (
-          {task.userEmail})
-          <BidForm taskId={task._id} />
+          <span className="font-semibold text-blue-500 dark:text-blue-400">Posted By:</span> {task.userName} ({task.userEmail})
         </p>
-        <button
-          onClick={() => navigate(-1)}
-          className="mt-4 p-2 bg-blue-600 hover:bg-blue-700 text-white rounded"
-        >
-          ← Back to Previous Page
-        </button>
+
+        {/* Bid Form */}
+        <div className="mt-6 ">
+          <BidForm taskId={task._id} />
+        </div>
+
+        {/* Back Button */}
+        <div className="mt-6">
+          <button
+            onClick={() => navigate(-1)}
+            className="px-5 py-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-semibold rounded-md cursor-pointer shadow hover:from-blue-700 hover:via-purple-700 hover:to-pink-700"
+          >
+            ← Back to Previous Page
+          </button>
+        </div>
       </div>
     </div>
   );

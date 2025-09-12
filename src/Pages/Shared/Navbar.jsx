@@ -94,11 +94,12 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-gradient-to-r from-indigo-800 via-purple-600 to-pink-700 text-white shadow-md px-4 py-2">
+   <div className="navbar fixed top-0 w-full z-50 bg-gradient-to-r from-indigo-800 via-purple-600 to-pink-700 text-white shadow-md px-4 py-2">
       {/* Logo */}
       <div className="flex-1 flex items-center">
         <Link
           to="/"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="text-2xl font-bold bg-gradient-to-r from-blue-200 via-purple-500 to-indigo-300 text-transparent bg-clip-text"
         >
           TaskNest

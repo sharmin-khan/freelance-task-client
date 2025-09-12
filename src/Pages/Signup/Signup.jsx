@@ -1,11 +1,15 @@
-import React, { use } from "react";
-import signup from "../../assets/images/register.json";
+import React, { use, useEffect } from "react";
+import signupAnimation from "../../assets/images/register.json";
 import { Link } from "react-router";
 import Lottie from "lottie-react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/AuthContext/AuthContext";
 
 const Signup = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { createUser, signInWithGoogle } = use(AuthContext);
 
   const handleSignup = (e) => {
@@ -18,7 +22,6 @@ const Signup = () => {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // Empty field check
     if (!name || !email || !photo || !password) {
       Swal.fire({
         icon: "error",
@@ -38,40 +41,33 @@ const Signup = () => {
     }
 
     // Password validation
-    const uppercase = /[A-Z]/;
-    const lowercase = /[a-z]/;
-
     if (password.length < 6) {
       Swal.fire({
         icon: "error",
         title: "Password Too Short",
         text: "Password must be at least 6 characters long",
       });
-      return false;
+      return;
     }
-
-    if (!uppercase.test(password)) {
+    if (!/[A-Z]/.test(password)) {
       Swal.fire({
         icon: "error",
         title: "Password Requirements",
         text: "Password must contain at least one uppercase letter",
       });
-      return false;
+      return;
     }
-
-    if (!lowercase.test(password)) {
+    if (!/[a-z]/.test(password)) {
       Swal.fire({
         icon: "error",
         title: "Password Requirements",
         text: "Password must contain at least one lowercase letter",
       });
-      return false;
+      return;
     }
 
-    //Create USer
     createUser(email, password)
       .then((result) => {
-        console.log("User created:", result.user);
         Swal.fire({
           icon: "success",
           title: "Signup Successfully",
@@ -82,7 +78,6 @@ const Signup = () => {
         form.reset();
       })
       .catch((error) => {
-        console.error("Signup Error:", error.message);
         Swal.fire({
           icon: "error",
           title: "Signup Failed",
@@ -91,11 +86,9 @@ const Signup = () => {
       });
   };
 
-  //Google Sign In
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
-        console.log("Google Sign In successful:", result.user);
         Swal.fire({
           icon: "success",
           title: "Google Sign In Successfully",
@@ -105,7 +98,6 @@ const Signup = () => {
         });
       })
       .catch((error) => {
-        console.error("Google Sign In Error:", error.message);
         Swal.fire({
           icon: "error",
           title: "Google Sign In Failed",
@@ -113,65 +105,76 @@ const Signup = () => {
         });
       });
   };
+
   return (
-    <div className="min-h-screen flex flex-col-reverse lg:flex-row items-center justify-center bg-gray-100 dark:bg-gray-900 p-4 overflow-x-hidden">
+    <div className="min-h-screen py-20 flex flex-col-reverse lg:flex-row items-center justify-center bg-gradient-to-r from-purple-50 via-indigo-50 to-pink-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 overflow-x-hidden">
+      {/* Animation */}
+      <div className="hidden lg:flex lg:w-1/2 justify-center items-center">
+        <Lottie
+          animationData={signupAnimation}
+          loop={true}
+          className="max-w-md w-full h-[600px] shadow-2xl rounded-2xl"
+        />
+      </div>
+
       {/* Form */}
-      <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+      <div className="w-full lg:w-1/2 flex justify-center">
         <form
           onSubmit={handleSignup}
-          className="bg-white dark:bg-gray-800 p-6 rounded shadow-md w-full max-w-md"
+          className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl w-full max-w-md transition-all duration-300 hover:shadow-2xl"
         >
-          <h2 className="text-2xl font-bold mb-4 text-center text-blue-600">
+          <h2 className="text-3xl font-bold mb-6 text-center text-blue-600">
             Create Your Account
           </h2>
 
-          <label className="label mb-1">Full Name</label>
+          <label className="label mb-1 font-medium">Full Name</label>
           <input
             type="text"
             placeholder="Enter your full name"
             name="name"
-            className="input input-bordered w-full mb-4"
+            className="input input-bordered w-full mb-4 focus:ring-2 focus:ring-blue-400 focus:outline-none"
           />
 
-          <label className="label mb-1">Email Address</label>
+          <label className="label mb-1 font-medium">Email Address</label>
           <input
             type="email"
             placeholder="Enter your email"
             name="email"
-            className="input input-bordered w-full mb-4"
+            className="input input-bordered w-full mb-4 focus:ring-2 focus:ring-blue-400 focus:outline-none"
           />
 
-          <label className="label mb-1">Photo URL</label>
+          <label className="label mb-1 font-medium">Photo URL</label>
           <input
             type="url"
             placeholder="Link to your profile photo"
             name="photo"
-            className="input input-bordered w-full mb-4"
+            className="input input-bordered w-full mb-4 focus:ring-2 focus:ring-blue-400 focus:outline-none"
           />
 
-          <label className="label mb-1">Password</label>
+          <label className="label mb-1 font-medium">Password</label>
           <input
             type="password"
             placeholder="Create a secure password"
             name="password"
-            className="input input-bordered w-full mb-4"
+            className="input input-bordered w-full mb-4 focus:ring-2 focus:ring-blue-400 focus:outline-none"
           />
 
           <button
             type="submit"
-            className="btn bg-blue-600 hover:bg-blue-400 text-white w-full text-lg"
+            className="btn bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 text-white w-full text-lg mb-3 transition-all duration-300 shadow-md hover:shadow-lg"
           >
             Sign Up
           </button>
 
-          <div className="divider">or</div>
+          <div className="divider text-gray-400">OR</div>
 
           <div className="text-center mb-3">
             <button
               onClick={handleGoogleSignIn}
               type="button"
-              className="btn bg-white text-black border-[#e5e5e5]"
+              className="btn bg-white text-black border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center gap-2 w-full"
             >
+              {/* Google SVG */}
               <svg
                 aria-label="Google logo"
                 width="16"
@@ -203,22 +206,13 @@ const Signup = () => {
             </button>
           </div>
 
-          <p className="mt-4 text-sm text-center">
+          <p className="mt-4 text-sm text-center text-gray-600 dark:text-gray-300">
             Already have an account?{" "}
             <Link to="/login" className="text-blue-500 underline">
               Log In
             </Link>
           </p>
         </form>
-      </div>
-
-      {/* Animation (only on large devices) */}
-      <div className="hidden lg:flex lg:w-1/2 justify-center items-center">
-        <Lottie
-          animationData={signup}
-          loop={true}
-          className="max-w-md w-full h-[600px]"
-        />
       </div>
     </div>
   );
