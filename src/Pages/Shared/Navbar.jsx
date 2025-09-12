@@ -213,20 +213,21 @@ const Navbar = () => {
                 </button>
               </>
             ) : (
-              <div className="flex flex-col gap-2">
-                <Link
-                  to="/login"
-                  className="px-4 py-2 rounded-3xl font-semibold text-white bg-gradient-to-r from-blue-500 via-purple-500 to-pink-600 shadow-md hover:shadow-lg hover:scale-105 transition transform duration-300 cursor-pointer"
-                >
-                  Login
-                </Link>
-                <Link
-                  to="/signup"
-                  className="px-4 py-2 rounded-3xl font-semibold text-white bg-gradient-to-r from-blue-500 via-purple-500 to-pink-600 shadow-md hover:shadow-lg hover:scale-105 transition transform duration-300 cursor-pointer"
-                >
-                  Signup
-                </Link>
-              </div>
+             <div className="flex flex-col items-center gap-2">
+  <Link
+    to="/login"
+    className="w-full text-center px-4 py-2 rounded-3xl font-semibold text-white bg-gradient-to-r from-blue-500 via-purple-500 to-pink-600 shadow-md hover:shadow-lg hover:scale-105 transition transform duration-300"
+  >
+    Login
+  </Link>
+  <Link
+    to="/signup"
+    className="w-full text-center px-4 py-2 rounded-3xl font-semibold text-white bg-gradient-to-r from-blue-500 via-purple-500 to-pink-600 shadow-md hover:shadow-lg hover:scale-105 transition transform duration-300"
+  >
+    Signup
+  </Link>
+</div>
+
             )}
           </ul>
         </div>
