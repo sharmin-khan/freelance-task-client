@@ -7,7 +7,7 @@ const Footer = () => {
     { name: "About", to: "/about" },
     { name: "Browse Tasks", to: "/browse-tasks" },
     { name: "Add Task", to: "/add-task" },
-    { name: "My Posted Tasks", to: "/my-tasks" },
+    { name: "My Posted Tasks", to: "/my-posted-tasks" },
   ];
 
   const socialLinks = [
