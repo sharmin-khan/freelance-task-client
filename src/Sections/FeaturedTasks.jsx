@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import LoadingSpinner from "../components/Spinner/LoadingSpinner";
 
 const FeaturedTasks = () => {
   const [tasks, setTasks] = useState([]);
-  const [loading, setLoading] = useState(true); // loading state
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("https://freelance-task-server-dusky.vercel.app/featured-tasks")
@@ -28,7 +29,6 @@ const FeaturedTasks = () => {
 
   return (
     <div className="my-20 px-4 max-w-7xl mx-auto">
-      {/* Section Header */}
       <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-indigo-600 text-center mb-6">
         Featured Tasks
       </h2>
@@ -38,26 +38,27 @@ const FeaturedTasks = () => {
         quickly and efficiently.
       </p>
 
-      {/* Tasks Grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {tasks.map((task) => (
-         <div
-  key={task._id}
-  className="rounded-xl p-5 shadow-md hover:shadow-xl transition transform hover:-translate-y-1
-    bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-50 
-    dark:from-indigo-900 dark:via-purple-800 dark:to-blue-900"
->
-  <h3 className="text-xl font-semibold mb-2 text-blue-700 dark:text-yellow-400">
-    {task.title}
-  </h3>
-  <p className="text-gray-700 dark:text-gray-200 mb-1">
-    Budget: <span className="font-semibold">${task.budget}</span>
-  </p>
-  <p className="text-gray-500 dark:text-gray-300">
-    Deadline: {new Date(task.deadline).toLocaleDateString()}
-  </p>
-</div>
-
+        {tasks.map((task, index) => (
+          <motion.div
+            key={task._id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+            className="rounded-xl p-5 shadow-md hover:shadow-xl transition transform hover:-translate-y-1
+              bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-50 
+              dark:from-indigo-900 dark:via-purple-800 dark:to-blue-900"
+          >
+            <h3 className="text-xl font-semibold mb-2 text-blue-700 dark:text-yellow-400">
+              {task.title}
+            </h3>
+            <p className="text-gray-700 dark:text-gray-200 mb-1">
+              Budget: <span className="font-semibold">${task.budget}</span>
+            </p>
+            <p className="text-gray-500 dark:text-gray-300">
+              Deadline: {new Date(task.deadline).toLocaleDateString()}
+            </p>
+          </motion.div>
         ))}
       </div>
     </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const TopFreelancer = () => {
   const freelancers = [
@@ -20,7 +21,7 @@ const TopFreelancer = () => {
       img: "https://i.ibb.co/nsVwPfQF/freelancer3-pg.jpg",
       desc: "Professional writer with a flair for SEO, blogs, and copywriting.",
     },
-       {
+    {
       name: "Razu Ahmed",
       role: "Full stack Developer",
       img: "https://i.ibb.co/nsVwPfQF/freelancer3-pg.jpg",
@@ -28,25 +29,43 @@ const TopFreelancer = () => {
     },
   ];
 
+  const containerVariants = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 120 } },
+  };
+
   return (
     <div className="my-20 px-4 w-full text-center">
-      {/* Section Header */}
       <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-indigo-600 text-center mb-6">
         Top Freelancers
       </h2>
       <p className="text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-12">
-        Meet some of our trusted and talented freelancers. They’ve delivered
-        amazing results for clients across the globe.
+        Meet some of our trusted and talented freelancers. They’ve delivered amazing results for clients across the globe.
       </p>
 
-      {/* Freelancers Grid */}
-      <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+      <motion.div
+        className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+      >
         {freelancers.map((freelancer, idx) => (
-          <div
+          <motion.div
             key={idx}
+            variants={cardVariants}
+            whileHover={{ scale: 1.05 }}
             className="bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-50 
               dark:from-indigo-900 dark:via-purple-800 dark:to-blue-900
-              p-6 rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition text-center"
+              p-6 rounded-xl shadow-md hover:shadow-xl transition text-center"
           >
             <img
               src={freelancer.img}
@@ -65,9 +84,9 @@ const TopFreelancer = () => {
             <button className="px-5 py-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-semibold rounded-3xl cursor-pointer shadow hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 transition">
               View Profile
             </button>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };
