@@ -2,10 +2,18 @@ import React from "react";
 import { Link } from "react-router";
 import errorpage from '../../assets/images/errorAnimation.json'
 import Lottie from "lottie-react";
+import { Helmet } from "react-helmet";
 
 const ErrorPage = () => {
   return (
     <div>
+      <Helmet>
+        <title>TaskNest | 404 Error</title>
+        <meta
+          name="description"
+          content="404 Error - Page Not Found on TaskNest. The page you're looking for doesn't exist."
+        />  
+      </Helmet>
       <div className="flex justify-center text-center mx-auto flex-col mt-12">
         <div className="flex justify-center items-center">
           <Lottie animationData={errorpage} loop={true} className="w-[30%]" />

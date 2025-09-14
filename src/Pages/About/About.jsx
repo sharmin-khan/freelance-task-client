@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import aboutImg from "../../assets/images/img.jpg";
+import { Helmet } from "react-helmet";
 
 const About = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
   return (
     <div className="w-full my-20 px-4">
+      <Helmet>
+        <title>TaskNest | About</title>
+        <meta
+          name="description"
+          content="Learn about TaskNest, the platform connecting clients and freelancers."
+        />
+      </Helmet>
       {/* Main About Section */}
       <div
         className="grid grid-cols-1 md:grid-cols-2 items-center gap-8 rounded-xl p-8 
@@ -98,18 +109,19 @@ const About = () => {
         </motion.div>
 
         {/* Call To Action */}
-<div className="mt-12 text-center">
-  <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-    Launch Your Projects with TaskNest Today
-  </h2>
-  <p className="mt-3 text-gray-600 dark:text-gray-300 md:text-lg">
-    Join thousands of freelancers and clients who trust TaskNest for seamless collaboration, efficient task management, and successful project delivery.
-  </p>
-  <button className="mt-6 px-8 py-3 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-semibold rounded-3xl shadow hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 transition transform hover:scale-105">
-    Get Started Now
-  </button>
-</div>
-
+        <div className="mt-12 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+            Launch Your Projects with TaskNest Today
+          </h2>
+          <p className="mt-3 text-gray-600 dark:text-gray-300 md:text-lg">
+            Join thousands of freelancers and clients who trust TaskNest for
+            seamless collaboration, efficient task management, and successful
+            project delivery.
+          </p>
+          <button className="mt-6 px-8 py-3 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-semibold rounded-3xl shadow hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 transition transform hover:scale-105">
+            Get Started Now
+          </button>
+        </div>
       </div>
     </div>
   );

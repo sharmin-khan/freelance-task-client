@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import LoadingSpinner from "../../components/Spinner/LoadingSpinner";
+import { Helmet } from "react-helmet";
 
 const BidsPage = () => {
   const { taskId } = useParams();
@@ -21,6 +22,13 @@ const BidsPage = () => {
 
   return (
     <div className="max-w-5xl mx-auto p-6">
+         <Helmet>
+        <title>TaskNest | Bids Page</title>
+        <meta
+          name="description"
+          content="View and manage bids for your freelance tasks on TaskNest."
+        />
+      </Helmet>
       <h2 className="text-3xl font-bold text-center text-blue-600 mb-8">
         Bids for This Task
       </h2>

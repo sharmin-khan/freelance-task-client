@@ -4,6 +4,7 @@ import loginAnimation from "../../assets/images/loginAnimation.json";
 import Lottie from "lottie-react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/AuthContext/AuthContext";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   useEffect(() => {
@@ -93,7 +94,13 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex flex-col-reverse lg:flex-row items-center justify-center bg-gradient-to-r from-purple-50 via-indigo-50 to-pink-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 py-20 overflow-x-hidden">
-    
+    <Helmet>
+        <title>TaskNest | Login</title>
+        <meta
+          name="description"
+          content="Log in to your TaskNest account to manage and find freelance tasks."
+        /> 
+    </Helmet>
        {/* Animation (only on large devices) */}
       <div className="hidden lg:flex lg:w-1/2 justify-center items-center">
         <Lottie

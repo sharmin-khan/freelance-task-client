@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import LoadingSpinner from "../../components/Spinner/LoadingSpinner";
+import { Helmet } from "react-helmet";
 
 const BrowseTasks = () => {
   useEffect(() => {
@@ -33,6 +34,13 @@ const BrowseTasks = () => {
 
   return (
     <div className="container mx-auto px-4 my-20">
+      <Helmet>
+        <title>TaskNest | Browse Tasks</title>
+        <meta
+          name="description"
+          content="Browse and find freelance tasks on TaskNest. Explore various categories and connect with clients."
+        />
+      </Helmet>
       <h2 className="text-4xl font-bold mb-10 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
         Browse Tasks
       </h2>

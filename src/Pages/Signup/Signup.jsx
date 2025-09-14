@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import Lottie from "lottie-react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/AuthContext/AuthContext";
+import { Helmet } from "react-helmet";
 
 const Signup = () => {
   useEffect(() => {
@@ -108,6 +109,13 @@ const Signup = () => {
 
   return (
     <div className="min-h-screen py-20 flex flex-col-reverse lg:flex-row items-center justify-center bg-gradient-to-r from-purple-50 via-indigo-50 to-pink-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 overflow-x-hidden">
+     <Helmet>
+        <title>TaskNest | Signup</title>
+        <meta
+          name="description"
+          content="Create a new account on TaskNest to post and manage freelance tasks."
+        />  
+     </Helmet>
       {/* Animation */}
       <div className="hidden lg:flex lg:w-1/2 justify-center items-center">
         <Lottie

@@ -3,6 +3,7 @@ import { AuthContext } from "../../Context/AuthContext/AuthContext";
 import LoadingSpinner from "../../components/Spinner/LoadingSpinner";
 import Swal from "sweetalert2";
 import { Link } from "react-router";
+import { Helmet } from "react-helmet";
 
 const MyPostedTask = () => {
   useEffect(() => {
@@ -115,6 +116,13 @@ const MyPostedTask = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 my-20">
+      <Helmet>
+        <title>TaskNest | My Posted Tasks</title>
+        <meta
+          name="description"
+          content="Manage and view your posted freelance tasks on TaskNest."
+        />
+      </Helmet>
       <h2 className="text-3xl lg:text-4xl font-bold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
         My Posted Tasks
       </h2>

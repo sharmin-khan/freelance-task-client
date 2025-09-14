@@ -2,6 +2,7 @@
 import React, { use, useEffect } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/AuthContext/AuthContext";
+import { Helmet } from "react-helmet";
 
 const AddTask = () => {
   useEffect(() => {
@@ -40,6 +41,13 @@ const AddTask = () => {
 
   return (
     <div className="max-w-2xl mx-auto my-20 p-8 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900 shadow-xl rounded-2xl">
+        <Helmet>
+        <title>TaskNest | Add Task</title>
+        <meta
+          name="description"
+          content="Add a new freelance task on TaskNest and connect with skilled freelancers."
+        />
+      </Helmet>
       <h2 className="text-3xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
         Add a New Task
       </h2>
