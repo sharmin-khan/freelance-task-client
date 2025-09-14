@@ -4,6 +4,7 @@ import { NavLink } from "react-router";
 const Footer = () => {
   const quickLinks = [
     { name: "Home", to: "/" },
+    { name: "About", to: "/about" },
     { name: "Browse Tasks", to: "/browse-tasks" },
     { name: "Add Task", to: "/add-task" },
     { name: "My Posted Tasks", to: "/my-tasks" },
