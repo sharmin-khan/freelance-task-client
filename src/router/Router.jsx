@@ -11,6 +11,7 @@ import BrowseTasks from "../Pages/BrowseTasks/BrowseTasks";
 import TaskDetails from "../Pages/TaskDetails/TaskDetails";
 import MyPostedTask from "../Pages/MyPostedTask/MyPostedTask";
 import BidsPage from "../Pages/Bidspage/Bidspage";
+import About from "../Pages/About/About";
 
 const router = createBrowserRouter([
   {
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
         path: "bids/:taskId",
         Component: BidsPage,
       },
+      {
+        path: "about",
+        Component: About,
+      }
     ],
   },
 ]);

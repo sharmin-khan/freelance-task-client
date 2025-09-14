@@ -51,6 +51,19 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
+          <li>
+        <NavLink
+          to="/about"
+          className={({ isActive }) =>
+            `relative font-semibold px-3 py-1 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 
+             after:h-[2px] after:bg-yellow-400 after:transition-all after:duration-300 hover:after:w-full ${
+               isActive ? "text-yellow-400 after:w-full" : "text-gray-100"
+             }`
+          }
+        >
+          About
+        </NavLink>
+      </li>
       <li>
         <NavLink
           to="/add-task"
